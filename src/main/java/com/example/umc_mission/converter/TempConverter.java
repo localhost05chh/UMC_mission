@@ -1,6 +1,6 @@
 package com.example.umc_mission.converter;
 
-import com.example.umc_mission.web.dto.TempResponse;
+import com.example.umc_mission.web.dto.tempDTO.TempResponse;
 
 public class TempConverter {
     public static TempResponse.TempTestDTO toTempTestDTO(){
