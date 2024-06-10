@@ -29,12 +29,15 @@ public class RegionCommandServiceImpl implements RegionCommandService{
     public Region createRegion(RegionRequestDTO.RegionDto request) {
 
         Region newRegion = RegionConverter.toRegion(request);
-        List<Restaurant> restaurantCategoryList = request.getRestaurantCategory().stream()
+        List<Region> regionList = request.getRestaurantCategory().stream()
                 .map(category -> {
                     return restaurantCategoryRepository.findById(category).orElseThrow(() -> new RestaurantCategoryHandler(ErrorStatus.RESTAURANT_CATEGORY_NOT_FOUND));
                 }).collect(Collectors.toList());
 
-        List<Restaurant> restaurantList = RestaurantConverter.toRestaurantList(restaurantCategoryList);
+        List<Restaurant> restaurantList = RestaurantConverter.toRestaurantList(regionList);
+
+        restaurantList.forEach(region -> {region.setRegion(newRegion);});
+
         return null;
     }
 }

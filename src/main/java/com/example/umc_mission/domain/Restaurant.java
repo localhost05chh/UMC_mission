@@ -40,4 +40,12 @@ public class Restaurant extends BaseEntity {
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private  List<Mission> missionList = new ArrayList<>();
+
+    public void setRegion(Region region){
+        if(this.region != null)
+            region.getRestaurantList().remove(this);
+        this.region = region;
+        region.getRestaurantList().add(this);
+    }
+
 }

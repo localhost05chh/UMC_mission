@@ -12,11 +12,12 @@ import java.util.stream.Collectors;
 
 
 public class RestaurantConverter {
-    public static List<Restaurant> toRestaurantList(List<Restaurant> RestaurantList) {
-        return RestaurantList.stream()
-                .map(RestaurantCategory ->
+    public static List<Restaurant> toRestaurantList(List<Region> RegionList) {
+        return RegionList.stream()
+                .map(region ->
                         Restaurant.builder()
-                                .region()
+                                .region(region)
+                                .build()
                 ).collect(Collectors.toList());
     }
 
