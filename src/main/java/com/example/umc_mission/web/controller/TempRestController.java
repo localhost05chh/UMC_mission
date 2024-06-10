@@ -3,9 +3,8 @@ package com.example.umc_mission.web.controller;
 import com.example.umc_mission.apiPlayload.ApiResponse;
 import com.example.umc_mission.converter.TempConverter;
 import com.example.umc_mission.service.TempService.TempQueryService;
-import com.example.umc_mission.web.dto.TempResponse;
+import com.example.umc_mission.web.dto.tempDTO.TempResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 
