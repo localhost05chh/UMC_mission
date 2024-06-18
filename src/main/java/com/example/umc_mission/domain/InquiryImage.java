@@ -1,6 +1,6 @@
-package com.example.umc_mission.domain;
+package com.example.umc_mission_set.domain;
 
-import com.example.umc_mission.domain.mapping.MemberInquiry;
+import com.example.umc_mission_set.domain.Inquiry;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,12 +17,10 @@ public class InquiryImage {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inquiry_id")
-    private MemberInquiry memberInquiry;
+    private Inquiry inquiry;
 
-    private Long imageOrder;
-
-    @Column(length = 50)
+    @Column(columnDefinition = "TEXT")
     private String imageUri;
 
-
+    private Integer imageOrder;
 }

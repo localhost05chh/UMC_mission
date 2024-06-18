@@ -1,4 +1,4 @@
-package com.example.umc_mission.domain;
+package com.example.umc_mission_set.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,9 +18,8 @@ public class ReviewImage {
     @JoinColumn(name = "review_id")
     private Review review;
 
-    private Long imageOrder;
-
-    @Column(length = 100)
+    @Column(columnDefinition = "TEXT")
     private String imageUri;
 
+    private Integer imageOrder;
 }

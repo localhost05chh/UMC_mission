@@ -1,7 +1,8 @@
-package com.example.umc_mission.domain.mapping;
+package com.example.umc_mission_set.domain.mapping;
 
-import com.example.umc_mission.domain.Member;
-import com.example.umc_mission.domain.PreferFood;
+import com.example.umc_mission_set.domain.Food;
+import com.example.umc_mission_set.domain.Member;
+import com.example.umc_mission_set.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,28 +11,30 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class MemberSelectFood {
+public class memberSelectFood extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id")
-    private PreferFood preferFood;
+    private Food food;
 
-    public void setMember(Member member){
-        if(this.member != null)
+    public void setMember(Member member) {
+        if (this.member != null) {
             member.getMemberSelectFoodList().remove(this);
+        }
         this.member = member;
         member.getMemberSelectFoodList().add(this);
     }
 
-    public void setFoodCategory(PreferFood preferFood){
-        this.preferFood = preferFood;
+    public void setFood(Food food) {
+        this.food = food;
     }
+
 }

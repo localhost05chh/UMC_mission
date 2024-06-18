@@ -1,35 +1,33 @@
-package com.example.umc_mission.domain.mapping;
+package com.example.umc_mission_set.domain.mapping;
 
-import com.example.umc_mission.domain.Member;
-import com.example.umc_mission.domain.Term;
-import com.example.umc_mission.domain.enums.IsAgree;
+import com.example.umc_mission_set.domain.Member;
+import com.example.umc_mission_set.domain.Term;
+import com.example.umc_mission_set.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class MemberTermAgree {
+public class memberTermAgree extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private boolean termAgree;
+
+    private LocalDateTime agreeTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "term_id")
     private Term term;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Member member;
-
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
-    private IsAgree isAgree;
-
-    private LocalDate agreeDate;
 }

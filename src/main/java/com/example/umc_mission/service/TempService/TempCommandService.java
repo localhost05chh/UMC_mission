@@ -1,4 +1,4 @@
-package com.example.umc_mission.service.TempService;
+package com.example.umc_mission_set.service.tempService;
 
 public interface TempCommandService {
 }

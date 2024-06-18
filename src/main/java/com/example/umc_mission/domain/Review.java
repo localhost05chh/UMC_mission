@@ -1,6 +1,6 @@
-package com.example.umc_mission.domain;
+package com.example.umc_mission_set.domain;
 
-import com.example.umc_mission.domain.common.BaseEntity;
+import com.example.umc_mission_set.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -18,18 +19,18 @@ public class Review extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // @Column(columnDefinition = "TEXT")
+    private String body;
+
+    private Float rating;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
-
-    @Column(nullable = false, length = 500)
-    private String body;
-
-    private int rating;
+    @JoinColumn(name = "store_id")
+    private Store store;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     private List<ReviewImage> reviewImageList = new ArrayList<>();

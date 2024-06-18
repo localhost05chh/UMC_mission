@@ -1,8 +1,9 @@
-package com.example.umc_mission.validation.annotation;
+package com.example.umc_mission_set.validation.annotation;
+import com.example.umc_mission_set.validation.validator.CategoriesExistValidator;
 
-import com.example.umc_mission.validation.validator.CategoriesExistValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+
 import java.lang.annotation.*;
 
 @Documented
@@ -15,3 +16,4 @@ public @interface ExistCategories {
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
+

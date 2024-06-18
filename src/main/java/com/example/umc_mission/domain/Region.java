@@ -1,6 +1,6 @@
-package com.example.umc_mission.domain;
+package com.example.umc_mission_set.domain;
 
-import com.example.umc_mission.domain.common.BaseEntity;
+import com.example.umc_mission_set.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,9 +18,9 @@ public class Region extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String regionName;
+    @Column(nullable = false, length = 20)
+    private String name;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Restaurant> restaurantList = new ArrayList<>();
+    private List<Store> storeList = new ArrayList<>();
 }

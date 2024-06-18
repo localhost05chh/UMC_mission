@@ -1,4 +1,4 @@
-package com.example.umc_mission.domain.common;
+package com.example.umc_mission_set.domain.common;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

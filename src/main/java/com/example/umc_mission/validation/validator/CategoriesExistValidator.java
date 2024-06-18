@@ -1,8 +1,8 @@
-package com.example.umc_mission.validation.validator;
+package com.example.umc_mission_set.validation.validator;
 
-import com.example.umc_mission.apiPlayload.code.status.ErrorStatus;
-import com.example.umc_mission.repository.FoodCategoryRepository;
-import com.example.umc_mission.validation.annotation.ExistCategories;
+import com.example.umc_mission_set.apiPayload.code.status.ErrorStatus;
+import com.example.umc_mission_set.repository.FoodRepository;
+import com.example.umc_mission_set.validation.annotation.ExistCategories;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +12,9 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class CategoriesExistValidator implements ConstraintValidator<ExistCategories, List<Long>>{
+public class CategoriesExistValidator implements ConstraintValidator<ExistCategories, List<Long>> {
 
-    private final FoodCategoryRepository foodCategoryRepository;
+    private final FoodRepository foodRepository;
 
     @Override
     public void initialize(ExistCategories constraintAnnotation) {
@@ -24,7 +24,7 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
         boolean isValid = values.stream()
-                .allMatch(foodCategoryRepository::existsById);
+                .allMatch(foodRepository::existsById);
 
         if (!isValid) {
             context.disableDefaultConstraintViolation();
@@ -32,5 +32,6 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
         }
 
         return isValid;
+
     }
 }

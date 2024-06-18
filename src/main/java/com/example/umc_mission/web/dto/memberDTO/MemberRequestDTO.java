@@ -1,29 +1,31 @@
-package com.example.umc_mission.web.dto.memberDTO;
+package com.example.umc_mission_set.web.dto.memberDTO;
 
-import com.example.umc_mission.validation.annotation.ExistCategories;
+import com.example.umc_mission_set.validation.annotation.ExistCategories;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class MemberRequestDTO {
 
     @Getter
-    public static class JoinDto{
+    public static class joinDto {
+        @NotBlank
         String name;
-        String email;
-        String phone;
-        int gender;
-        String address;
-        String birthday;
+        @NotNull
         String nickname;
-        String phoneCheck;
-        int successMission;
-        int myPoint;
-        String status;
-        LocalDateTime inactive;
-        LocalDateTime updatedAt;
+        @NotNull
+        Integer gender;
+        @NotNull
+        Integer birthYear;
+        @NotNull
+        Integer birthMonth;
+        @NotNull
+        Integer birthDay;
+        @Size(min = 5, max = 20)
+        String address;
         @ExistCategories
-        List<Long> preferCategory;
+        List<Long> selectFoodList;
     }
 }
